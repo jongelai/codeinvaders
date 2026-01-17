@@ -28,7 +28,7 @@ jobs:
 
     - name: Build game wasm
       run: |
-        python3 -m pygame_ce.web.build game.py \
+        python3 -m pygame.web.build game.py \
           --output web \
           --data assets \
           --audio assets \
