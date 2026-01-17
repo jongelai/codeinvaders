@@ -1,4 +1,4 @@
-name: Build Web (pygame-ce)
+name: Build Web (pygame)
 
 on:
   push:
@@ -22,13 +22,13 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y python3 python3-pip
 
-    - name: Install pygame-ce (web)
+    - name: Install pygame-web
       run: |
-        pip install pygame-ce[web]
+        pip install pygame-web
 
     - name: Build game wasm
       run: |
-        python3 -m pygame_ce.web.build game.py --output web
+        python3 -m pygame_web.build game.py --output web
 
     - name: Upload artifact web
       uses: actions/upload-artifact@v4
