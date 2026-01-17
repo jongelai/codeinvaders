@@ -3,7 +3,6 @@ name: Build Web (pygame-ce)
 on:
   push:
     branches: [ "main" ]
-  workflow_dispatch:
 
 jobs:
   build:
@@ -12,20 +11,14 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install emscripten
-      uses: mymindstorm/setup-emsdk@v13
-      with:
-        version: 3.1.56
-
-    - name: Install python + pip
+    - name: Install deps
       run: |
         sudo apt-get update
         sudo apt-get install -y python3 python3-pip
 
-    - name: Install pygame-ce web
+    - name: Install pygame-ce (web)
       run: |
-        pip install --upgrade pip
-        pip install "pygame-ce[web]"
+        pip install "pygame-ce[web]==2.5.4"
 
     - name: Build wasm
       run: |
