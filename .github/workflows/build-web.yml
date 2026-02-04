@@ -15,16 +15,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Python and pygame-ce
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pygame-ce
         run: |
           python -m pip install --upgrade pip
-          pip install "pygame-ce[web]==2.5.4"
+          python -m pip install "pygame-ce[web]==2.5.4"
 
       - name: Build Web Version
         run: |
-          # Este comando genera una nueva carpeta 'dist' con todo lo necesario
-          # Usamos --data assets para incluir tus imágenes y sonidos
-          python3 -m pygame_ce.web.build game.py --output dist --data assets --audio assets --release
+          # Usamos 'python -m' para asegurar que encuentre el modulo instalado
+          python -m pygame_ce.web.build game.py --output dist --data assets --audio assets --release
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
@@ -36,6 +40,11 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
