@@ -20,14 +20,11 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install pygame-ce
+      - name: Install and Build
         run: |
           python -m pip install --upgrade pip
           python -m pip install "pygame-ce[web]==2.5.4"
-
-      - name: Build Web Version
-        run: |
-          # Usamos 'python -m' para asegurar que encuentre el modulo instalado
+          # Ejecutamos el build directamente con el python que tiene instalado el modulo
           python -m pygame_ce.web.build game.py --output dist --data assets --audio assets --release
 
       - name: Upload Pages artifact
