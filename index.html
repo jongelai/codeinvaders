@@ -1,48 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Space Invaders</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<style>
-body {
-  background: #000;
-  margin: 0;
-  overflow: hidden;
-  font-family: monospace;
-}
-#controls {
-  position: fixed;
-  right: 10px;
-  top: 10px;
-  z-index: 10;
-  display: flex;
-  gap: 10px;
-}
-button {
-  background: rgba(40,40,40,0.7);
-  border: 1px solid #aaa;
-  color: white;
-  padding: 10px 15px; /* Más grande para dedos en Android */
-  font-size: 16px;
-  cursor: pointer;
-}
-canvas { 
-  display: block; 
-  margin: 0 auto; 
-  image-rendering: pixelated; 
-  max-width: 100vw; 
-  max-height: 100vh; 
-}
-</style>
+    <meta charset="utf-8">
+    <title>Space Invaders</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        body { background: #000; margin: 0; overflow: hidden; font-family: monospace; }
+        #controls { position: fixed; right: 10px; top: 10px; z-index: 10; display: flex; gap: 10px; }
+        button { background: rgba(40,40,40,0.7); border: 1px solid #aaa; color: white; padding: 10px 15px; font-size: 16px; cursor: pointer; }
+        canvas { display: block; margin: 0 auto; image-rendering: pixelated; max-width: 100vw; max-height: 100vh; }
+    </style>
 </head>
 <body>
-<div id="controls">
-  <button id="btnFS">Fullscreen</button>
-  <button id="btnMute">Mute</button>
-</div>
-<canvas id="canvas"></canvas>
-
-<script src="loader.js"></script>
+    <div id="controls">
+        <button id="btnFS">Fullscreen</button>
+        <button id="btnMute">Mute</button>
+    </div>
+    <canvas id="canvas"></canvas>
+    <script src="loader.js"></script>
 </body>
 </html>
